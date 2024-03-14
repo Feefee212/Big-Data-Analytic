@@ -1,0 +1,96 @@
+1.Write an SQL query to retrieve the customer names and contact names for customers located in 'Stuttgart'.
+- SELECT CustomerName, ContactName FROM Customers WHERE City = 'Stuttgart';
++-------------------+--------------+
+| CustomerName      | ContactName  |
++-------------------+--------------+
+| Die Wandernde Kuh | Rita Müller  |
++-------------------+--------------+
+
+2.Write an SQL query to retrieve the employee names and birthdates for employees born after '1960-05-29'.
+- SELECT FirstName, Birthdate  FROM Employees WHERE Birthdate>'1960-05-29';
++-----------+------------+
+| FirstName | Birthdate  |
++-----------+------------+
+| Nancy     | 1968-12-08 |
+| Janet     | 1963-08-30 |
+| Michael   | 1963-07-02 |
+| Anne      | 1969-07-02 |
+
+3.Write an SQL query to retrieve the shipper names and phone numbers for shippers with a phone number '(503) 555-3199'.
+mysql> select ShipperName, Phone from Shippers order by Phone asc limit 1;
+- SELECT ShipperName, Phone FROM Shippers WHERE Phone = '(503) 555-3199';
++----------------+----------------+
+| ShipperName    | Phone          |
++----------------+----------------+
+| United Package | (503) 555-3199 |
++----------------+----------------+
+
+
+4.Write an SQL query to retrieve the order IDs and order dates for orders placed by the customer with - SELECT OrderID, OrderDate, OrderID FROM Orders WHERE CustomerID = 63;
++---------+------------+---------+
+| OrderID | OrderDate  | OrderID |
++---------+------------+---------+
+|   10273 | 1996-08-05 |   10273 |
+|   10285 | 1996-08-20 |   10285 |
+|   10286 | 1996-08-21 |   10286 |
+|   10313 | 1996-09-24 |   10313 |
+|   10345 | 1996-11-04 |   10345 |
+|   10361 | 1996-11-22 |   10361 |
+|   10418 | 1997-01-17 |   10418 |
++---------+------------+---------+
+
+5.Write an SQL query to retrieve the order IDs and quantities for orders that contain a product with ID = 49.
+- SELECT OrderID, Quantity FROM OrderDetails WHERE  ProductID = 49;
++---------+----------+
+| OrderID | Quantity |
++---------+----------+
+|   10253 |       40 |
+|   10290 |       15 |
+|   10304 |       30 |
+|   10360 |       35 |
+|   10400 |       30 |
+|   10404 |       30 |
+
+6.Write an SQL query to retrieve the product names and prices for products with a price of more than 30.
+-  SELECT ProductName,Price FROM Products WHERE Price > 30;
++----------------------------+--------+
+| ProductName                | Price  |
++----------------------------+--------+
+| Northwoods Cranberry Sauce |     40 |
+| Mishi Kobe Niku            |     97 |
+| Ikura                      |     31 |
+| Queso Manchego La Pastora  |     38 |
+| Alice Mutton               |     39 |
+| Carnarvon Tigers           |   62.5 |
+| Sir Rodney's Marmalade     |     81 |
+| Gumbär Gummibärchen        |  31.23 |
+| Schoggi Schokolade         |   43.9 |
+| Rössle Sauerkraut          |   45.6 |
+| Thüringer Rostbratwurst    | 123.79 |
+| Mascarpone Fabioli         |     32 |
+| Côte de Blaye              |  263.5 |
+| Ipoh Coffee                |     46 |
+| Manjimup Dried Apples      |     53 |
+| Perth Pasties              |   32.8 |
+| Gnocchi di nonna Alice     |     38 |
+| Raclette Courdavault       |     55 |
+| Camembert Pierrot          |     34 |
+| Tarte au sucre             |   49.3 |
+| Vegie-spread               |   43.9 |
+| Wimmers gute Semmelknödel  |  33.25 |
+| Gudbrandsdalsost           |     36 |
+| Mozzarella di Giovanni     |   34.8 |
++----------------------------+--------+
+7.Write an SQL query to retrieve the supplier names and countries for suppliers located in Norway.
+- SELECT SupplierName,Country FROM Suppliers WHERE Country='Norway';
++-----------------+---------+
+| SupplierName    | Country |
++-----------------+---------+
+| Norske Meierier | Norway  |
+8.Write an SQL query to retrieve the category names and descriptions for a category with ID = 5.
+- SELECT CategoryName, Description FROM Categories WHERE CategoryID = 5;
++----------------+-------------------------------------+
+| CategoryName   | Description                         |
++----------------+-------------------------------------+
+| Grains/Cereals | Breads, crackers, pasta, and cereal |
++----------------+-------------------------------------+

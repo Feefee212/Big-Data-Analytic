@@ -1,0 +1,166 @@
+1. List of included attributes for modeling.
+year
+month
+day
+state
+is_male
+child_race
+weight_pounds
+apgar_1min
+apgar_5min
+mother_age
+gestation_weeks
+mother_married
+cigarette_use
+alcohol_use
+born_alive_alive
+born_alive_dead
+born_dead
+ever_born
+
+
+2. SQL QUERY
+2.1 Data preparation
+CREATE OR REPLACE TABLE machine_learning.natality_model1 AS
+SELECT
+    year,
+    month,
+    day,
+    state,
+    is_male,
+    child_race,
+    weight_pounds,
+    apgar_1min,
+    apgar_5min,
+    mother_age,
+    gestation_weeks,
+    mother_married,
+    cigarette_use,
+    alcohol_use,
+    born_alive_alive,
+    born_alive_dead,
+    born_dead,
+    ever_born
+FROM 'bigquery-public-data.samples.natality';
+
+
+2.2 Model building
+CREATE OR REPLACE MODEL machine_learning.natality_model1
+OPTIONS(model_type='linear_reg') AS
+SELECT
+  weight_pounds,
+  year,
+  month,
+  day,
+  state,
+  is_male,
+  child_race,
+  apgar_1min,
+  apgar_5min,
+  mother_age,
+  gestation_weeks,
+  mother_married,
+  cigarette_use,
+  alcohol_use,
+  born_alive_alive,
+  born_alive_dead,
+  born_dead,
+  ever_born
+FROM
+  'bigquery-public-data.samples.natality';
+
+
+
+
+SQL statement to model training with the training set:
+SELECT
+ *
+FROM
+ ML.TRAINING_INFO(MODEL `machine_learning.natality_model1`);
+
+
+
+   3. Model evaluation
+SELECT
+  ML.EVALUATE(MODEL machine_learning.natality_model1,
+    (
+      SELECT
+        weight_pounds,
+        year,
+        month,
+        day,
+        state,
+        is_male,
+        child_race,
+        apgar_1min,
+        apgar_5min,
+        mother_age,
+        gestation_weeks,
+        mother_married,
+        cigarette_use,
+        alcohol_use,
+        born_alive_alive,
+        born_alive_dead,
+        born_dead,
+        ever_born
+      FROM
+        'machine_learning.natality_model1'
+    )
+  ).mean_absolute_error AS mae,
+  ML.EVALUATE(MODEL machine_learning.natality_model1,
+    (
+      SELECT
+        weight_pounds,
+        year,
+        month,
+        day,
+        state,
+        is_male,
+        child_race,
+        apgar_1min,
+        apgar_5min,
+        mother_age,
+        gestation_weeks,
+        mother_married,
+        cigarette_use,
+        alcohol_use,
+        born_alive_alive,
+        born_alive_dead,
+        born_dead,
+        ever_born
+      FROM
+        'machine_learning.natality_model1'
+    )
+  ).root_mean_squared_error AS rmse;
+
+
+
+   4. Model prediction
+CREATE OR REPLACE TABLE machine_learning.natality_model1 AS
+SELECT
+  *
+FROM
+  ML.PREDICT(MODEL machine_learning.natality_model1,
+    (
+      SELECT
+        year,
+        month,
+        day,
+        state,
+        is_male,
+        child_race,
+        apgar_1min,
+        apgar_5min,
+        mother_age,
+        gestation_weeks,
+        mother_married,
+        cigarette_use,
+        alcohol_use,
+        born_alive_alive,
+        born_alive_dead,
+        born_dead,
+        ever_born
+      FROM
+       'machine_learning.natality_model1'
+    )
+  );

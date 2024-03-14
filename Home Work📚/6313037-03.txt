@@ -1,0 +1,196 @@
+1.Write an SQL query to retrieve the total number of customers from each country.
+- SELECT Country, COUNT(*) AS TotalCustomers FROM Customers GROUP BY Country;
++-------------+----------------+
+| Country     | TotalCustomers |
++-------------+----------------+
+| Germany     |             11 |
+| Mexico      |              5 |
+| UK          |              7 |
+| Sweden      |              2 |
+| France      |             11 |
+| Spain       |              5 |
+| Canada      |              3 |
+| Argentina   |              3 |
+| Switzerland |              2 |
+| Brazil      |              9 |
+| Austria     |              2 |
+| Italy       |              3 |
+| Portugal    |              2 |
+| USA         |             13 |
+| Venezuela   |              4 |
+| Ireland     |              1 |
+| Belgium     |              2 |
+| Norway      |              1 |
+| Denmark     |              2 |
+| Finland     |              2 |
+| Poland      |              1 |
++-------------+----------------+
+2. Write an SQL query to find the number of employees born in each year.
+- SELECT YEAR(Birthdate) AS BirthYear, COUNT(*) AS EmployeeCount FROM Employees GROUP BY YEAR(Birthdate);
++-----------+---------------+
+| BirthYear | EmployeeCount |
++-----------+---------------+
+|      1968 |             1 |
+|      1952 |             1 |
+|      1963 |             2 |
+|      1958 |             2 |
+|      1955 |             1 |
+|      1960 |             1 |
+|      1969 |             1 |
+|      1928 |             1 |
++-----------+---------------+
+3. Write an SQL query to retrieve the number of orders handled by each shipper.
+- SELECT ShipperID, COUNT(*) AS OrderCount FROM OrdersGROUP BY ShipperID;
++-----------+------------+
+| ShipperID | OrderCount |
++-----------+------------+
+|         1 |         54 |
+|         2 |         74 |
+|         3 |         68 |
++-----------+------------+
+4. Write an SQL query to retrieve the count of orders placed in each year.
+-SELECT YEAR(OrderDate) AS OrderYear, COUNT(*) AS OrderCount FROM Orders GROUP BY YEAR(OrderDate);
++-----------+------------+
+| OrderYear | OrderCount |
++-----------+------------+
+|      1996 |        152 |
+|      1997 |         44 |
++-----------+------------+
+5. Write an SQL query to find the total quantity of each product sold.
+- SELECT ProductID, SUM(Quantity) AS TotalQuantity FROM OrderDetails GROUP BY ProductID;
++-----------+---------------+
+| ProductID | TotalQuantity |
++-----------+---------------+
+|         1 |           159 |
+|         2 |           341 |
+|         3 |            80 |
+|         4 |           107 |
+|         5 |           129 |
+|         6 |            36 |
+|         7 |            25 |
+|         8 |           140 |
+|         9 |            20 |
+|        10 |            85 |
+|        11 |           182 |
+|        12 |            27 |
+|        13 |            92 |
+|        14 |           152 |
+|        15 |            25 |
+|        16 |           338 |
+|        17 |           331 |
+|        18 |           106 |
+|        19 |           181 |
+|        20 |           106 |
+|        21 |           147 |
+|        22 |            18 |
+|        23 |           165 |
+|        24 |           158 |
+|        25 |            71 |
+|        26 |           232 |
+|        27 |            90 |
+|        28 |           189 |
+|        29 |           168 |
+|        30 |           170 |
+|        31 |           458 |
+|        32 |            52 |
+|        33 |           316 |
+|        34 |           110 |
+|        35 |           369 |
+|        36 |           198 |
+|        37 |            39 |
+|        38 |           239 |
+|        39 |           266 |
+|        40 |           256 |
+|        41 |           139 |
+|        42 |            77 |
+|        43 |           136 |
+|        44 |           178 |
+|        45 |            15 |
+|        46 |           145 |
+|        47 |           101 |
+|        48 |            70 |
+|        49 |           180 |
+|        50 |            70 |
+|        51 |           163 |
+|        52 |            48 |
+|        53 |           251 |
+|        54 |           280 |
+|        55 |           238 |
+|        56 |           269 |
+|        57 |           168 |
+|        58 |           155 |
+|        59 |           346 |
+|        60 |           430 |
+|        61 |           106 |
+|        62 |           325 |
+|        63 |           209 |
+|        64 |           167 |
+|        65 |           175 |
+|        66 |            90 |
+|        67 |             5 |
+|        68 |           199 |
+|        69 |           184 |
+|        70 |           164 |
+|        71 |           336 |
+|        72 |           270 |
+|        73 |            45 |
+|        74 |           186 |
+|        75 |           144 |
+|        76 |           198 |
+|        77 |           108 |
++-----------+---------------+
+6.Write an SQL query to calculate the average price of products in each category.
+- SELECT CategoryID, AVG(Price) AS AveragePrice FROM Products GROUP BY CategoryID;
++------------+--------------------+
+| CategoryID | AveragePrice       |
++------------+--------------------+
+|          1 | 37.979166666666664 |
+|          2 |            23.0625 |
+|          3 |              25.16 |
+|          4 |              28.73 |
+|          5 |              20.25 |
+|          6 |  54.00666666666667 |
+|          7 |              32.37 |
+|          8 |            20.6825 |
++------------+--------------------+
+7. Write an SQL query to find the number of suppliers from each country. 
+- SELECT Country, COUNT(*) AS SupplierCount FROM Suppliers GROUP BY Country;
++-------------+---------------+
+| Country     | SupplierCount |
++-------------+---------------+
+| UK          |             2 |
+| USA         |             4 |
+| Japan       |             2 |
+| Spain       |             1 |
+| Australia   |             2 |
+| Sweden      |             2 |
+| Brazil      |             1 |
+| Germany     |             3 |
+| Italy       |             2 |
+| Norway      |             1 |
+| France      |             3 |
+| Singapore   |             1 |
+| Denmark     |             1 |
+| Netherlands |             1 |
+| Finland     |             1 |
+| Canada      |             2 |
++-------------+---------------+
+8.Write an SQL query to calculate the total number of products in each category. 
+- SELECT CategoryID, COUNT(*) AS ProductCount FROM Products GROUP BY CategoryID;
++------------+--------------+
+| CategoryID | ProductCount |
++------------+--------------+
+|          1 |           12 |
+|          2 |           12 |
+|          3 |           13 |
+|          4 |           10 |
+|          5 |            7 |
+|          6 |            6 |
+|          7 |            5 |
+|          8 |           12 |
++------------+--------------+
+
+
+
+
+
